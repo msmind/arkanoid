@@ -1,17 +1,22 @@
 package ru.game.corp;
 
-import java.awt.Graphics;
+import java.awt.KeyEventDispatcher;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
-public class KeyProcess implements KeyListener {
+public class KeyProcess implements KeyEventDispatcher {
 	public JFrame frame;
 
+	private final int DEFAULT_POSITION_X = 25;
+	private final int DEFAULT_POSITION_Y = 25;
+	private final int DEFAULT_WIDTH = 80;
+	private final int DEFAULT_HEIGHT = 40;
+	private int x = DEFAULT_POSITION_X;
+	private int y = DEFAULT_POSITION_Y;
+
 	public KeyProcess() {
-		frame = new JFrame();
+		this(new JFrame());
 	}
 
 	public KeyProcess(JFrame frame) {
@@ -19,33 +24,14 @@ public class KeyProcess implements KeyListener {
 	}
 
 	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			frame.add(new JPanel() {
-				/**
-				 * 
-				 */
-				private static final long serialVersionUID = -1209071366658789253L;
-
-				@Override
-				public void paint(Graphics g) {
-
-				}
-			});
+	public boolean dispatchKeyEvent(KeyEvent e) {
+		if (e.getID() == KeyEvent.KEY_PRESSED) {
+			System.out.println("KeyEventDispatcher tester");
+		} else if (e.getID() == KeyEvent.KEY_RELEASED) {
+			System.out.println("KeyEventDispatcher 2test2");
+		} else if (e.getID() == KeyEvent.KEY_TYPED) {
+			System.out.println("KeyEventDispatcher 3test3");
 		}
-		// TODO Auto-generated method stub
+		return false;
 	}
-
 }
