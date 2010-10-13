@@ -13,14 +13,10 @@ public class Arkanoid extends JFrame {
 	}
 
 	public Arkanoid(String title) {
-		/*
-		 * KeyboardFocusManager manager = KeyboardFocusManager
-		 * .getCurrentKeyboardFocusManager(); manager.addKeyEventDispatcher(new
-		 * KeyProcess());
-		 */
+
 		gameLogic = new GameLogic();
 
-		this.getContentPane().add(gameLogic, BorderLayout.CENTER);
+		this.getContentPane().add(gameLogic, BorderLayout.NORTH);
 
 		this.setTitle(title);
 		this.pack();
