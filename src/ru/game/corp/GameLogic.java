@@ -38,6 +38,7 @@ public class GameLogic extends JPanel implements KeyListener {
 		this.setBackground(Color.WHITE);
 		this.setPreferredSize(new Dimension(DEFAULT_WINDOW_WIDTH,
 				DEFAULT_WINDOW_HEIGHT));
+		ArkanoidDllLibrary.INSTANCE.net_open("192.168.0.103", 44522);
 		// player
 		this.addKeyListener(this);
 		this.setFocusable(true);
@@ -186,5 +187,9 @@ public class GameLogic extends JPanel implements KeyListener {
 
 	public void keyTyped(KeyEvent e) {
 		System.out.println("3test3");
+	}
+
+	public void freeResources() {
+		ArkanoidDllLibrary.INSTANCE.net_close();
 	}
 }
